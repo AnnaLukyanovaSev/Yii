@@ -7,7 +7,7 @@ use Yii;
 /**
  * This is the model class for table "film".
  *
- * @property int $film-id
+ * @property int $id
  * @property string $film
  * @property int $year
  * @property int $crid
@@ -42,7 +42,7 @@ class Film extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'film-id' => 'Film ID',
+            'id' => 'ID',
             'film' => 'Film',
             'year' => 'Year',
             'crid' => 'Crid',
@@ -54,6 +54,6 @@ class Film extends \yii\db\ActiveRecord
      */
     public function getFs()
     {
-        return $this->hasMany(Fs::className(), ['films' => 'film-id']);
+        return $this->hasMany(Fs::className(), ['films' => 'id']);
     }
 }

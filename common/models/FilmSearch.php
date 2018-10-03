@@ -18,7 +18,7 @@ class FilmSearch extends Film
     public function rules()
     {
         return [
-            [['film-id', 'year', 'crid'], 'integer'],
+            [['id', 'year', 'crid'], 'integer'],
             [['film'], 'safe'],
         ];
     }
@@ -59,7 +59,7 @@ class FilmSearch extends Film
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'film-id' => $this->film-id,
+            'id' => $this->id,
             'year' => $this->year,
             'crid' => $this->crid,
         ]);
