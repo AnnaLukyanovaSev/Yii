@@ -9,6 +9,15 @@ class StyleCest
     {
         $I->amOnRoute('/styles');
         $I->see('Styles', 'h1');
+
+        $I->amOnRoute('/styles/update?id=3');
+        $I->see('Update');
+
+        $I->amOnRoute('/styles/view?id=3');
+        $I->see('Update');
+
+        $I->amOnRoute('/styles/create');
+        $I->see('Create Styles','h1');
     }
 
 }

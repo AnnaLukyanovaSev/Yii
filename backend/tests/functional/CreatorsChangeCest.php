@@ -9,8 +9,7 @@ class CreatorsChangeCest
 
     public function checkCreatorNew(FunctionalTester $I)
     {
-        //add and update
-
+        $I->wantTo('add and update element');
         $I->amOnPage('/creators');
         $I->click('Create Creators');
         $I->fillField('Surname', 'Miles');
@@ -21,51 +20,45 @@ class CreatorsChangeCest
         $I->see('Creators');
         $I->seeInCurrentUrl('creators/index');
 
-        //add and delete
 
+        $I->wantTo('add and delete element');
         $I->amOnPage('/creators');
         $I->click('Create Creators');
         $I->fillField('Surname', 'Miles');
         $I->click('Save');
         $I->click('Delete');
-        // $I->see('Creators');
 
 
-
-        //add blank
-
+        $I->wantTo('add blank element');
         $I->amOnPage('/creators');
         $I->click('Create Creators');
         $I->fillField('Surname', '');
         $I->click('Save');
         $I->see('Surname cannot be blank.');
+
     }
 
     public function reductCreatorNew(FunctionalTester $I)
     {
-        //reduct and update
+        $I->wantTo('reduct element');
         $I->amOnPage('/creators');
         $I->click('Update');
         $I->fillField('Surname', 'Petrukovich');
         $I->click('Save');
-        //$I->see('Update creators:');
         $I->click('Creators');
         $I->see('Creators');
 
-        //add blank
-
+        $I->wantTo('reduct with blank element');
         $I->amOnPage('/creators');
         $I->click('Update');
         $I->fillField('Surname', '');
         $I->click('Save');
         $I->see('Surname cannot be blank.');
 
-        //reduct and delete
-
+        $I->wantTo('reduct with element and delete it');
         $I->amOnPage('/creators');
         $I->click('Update');
         $I->fillField('Surname', 'Petrukovich');
         $I->click('Delete');
-
     }
 }
