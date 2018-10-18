@@ -2,6 +2,7 @@
 
 namespace common\models\Creators;
 
+use common\models\Film\Film;
 use Yii;
 
 /**
@@ -41,4 +42,14 @@ class Creators extends \yii\db\ActiveRecord
             'surname' => 'Surname',
         ];
     }
+
+    public function getFilm()
+    {
+        return $this->hasMany(Film::className(), ['crid' => 'id'])->inverseOf('film');
+    }
+
+/*$customers = Customer::find()
+->joinWith('orders')
+->where(['order.status' => Order::STATUS_ACTIVE])
+->all();*/
 }

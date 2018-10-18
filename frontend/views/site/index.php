@@ -11,6 +11,28 @@ $this->title = 'My Yii Application';
 
         <p class="lead">You have successfully created your Yii-powered application.</p>
 
+<!--Anna begin -->
+        <?php
+        if (!isset($_COOKIE['visits1'])) {
+            $_COOKIE['visits1'] = 0;
+        }
+        $visits1 = $_COOKIE['visits1'] + 1;
+        setcookie('visits1', $visits1, time() + 3600*24*365);
+        if ($visits1 > 1) {
+            echo("This is visit number $visits1").PHP_EOL;
+        } else { // First visit
+            echo('Welcome to my Website!').PHP_EOL;
+        }
+        ?>
+        <br>
+        <?php
+     //  echo ;
+      // $t= Yii::$app->user->identity->auth_at;
+      // echo date('Y-m-d G:i:s',$t);
+        echo 'Last login at '.date('Y-m-d G:i:s', Yii::$app->user->identity->auth_at);
+        ?>
+        <!--Anna end -->
+
         <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p>
     </div>
 

@@ -3,6 +3,9 @@
 namespace common\models\Film;
 
 use Yii;
+use common\models\Creators\Creators as Creators;
+//require_once ('D:/OSPanel/domains/yii_proj/common/models/Creators/Creators.php');
+
 
 /**
  * This is the model class for table "film".
@@ -33,6 +36,14 @@ class Film extends \yii\db\ActiveRecord
             [['film'], 'required'],
             [['year', 'crid'], 'integer'],
             [['film'], 'string', 'max' => 255],
+            // add by Ann
+            [
+                ['crid'],
+                'exist',
+                'targetClass' => Creators::className(),
+                'targetAttribute' => ['crid' => 'id']
+            ]
+            // add by Ann
         ];
     }
 
@@ -56,4 +67,11 @@ class Film extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Fs::className(), ['films' => 'id']);
     }
+
+    // add by Ann
+    public function getCreators()
+    {
+        return $this->hasOne(Creators::className(), ['id' => 'crid']);
+    }
 }
+    // add by Ann

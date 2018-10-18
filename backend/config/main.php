@@ -17,9 +17,14 @@ return [
             'csrfParam' => '_csrf-backend',
         ],
         'user' => [
+            'class' => 'yii\web\User',
             'identityClass' => 'common\models\User',
             'enableAutoLogin' => true,
             'identityCookie' => ['name' => '_identity-backend', 'httpOnly' => true],
+            'loginUrl' => ['/site/login'],
+            'on afterLogin' => function ($event) {
+                Yii::$app->user->identity->updateAttributes(['auth_at' => time()]);
+            }
         ],
         'session' => [
             // this is the name of the session cookie used for login on the backend
@@ -44,8 +49,7 @@ return [
             'rules' => [
             ],
         ],
-       
-	
+
     ],
     'params' => $params,
 ];
