@@ -26,7 +26,8 @@ class FilmController extends Controller
                     'delete' => ['POST'],
                 ],
             ],
-        ];
+         ];
+
     }
 
     /**

@@ -5,10 +5,10 @@
  * @license http://www.yiiframework.com/license/
  */
 
-namespace yii\behaviors;
+namespace common\behaviours;
 
 use Yii;
-use yii\db\BaseActiveRecord;
+use yii\behaviors\BlameableBehavior;
 
 class BlameableBehaviorAnn extends BlameableBehavior
 {

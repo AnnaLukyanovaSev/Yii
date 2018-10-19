@@ -4,8 +4,8 @@ namespace common\models\Film;
 
 use Yii;
 use common\models\Creators\Creators as Creators;
-//require_once ('D:/OSPanel/domains/yii_proj/common/models/Creators/Creators.php');
-
+use yii\behaviors\TimestampBehavior;
+use common\behaviours\BlameableBehaviorAnn;
 
 /**
  * This is the model class for table "film".
@@ -25,6 +25,27 @@ class Film extends \yii\db\ActiveRecord
     public static function tableName()
     {
         return 'film';
+    }
+
+    public function behaviors()
+    {
+        return [
+            [
+                'class' => TimestampBehavior::className(),
+                'attributes' => [
+                    parent::EVENT_BEFORE_INSERT => ['create_at', 'reduct_at'],
+                    parent::EVENT_BEFORE_UPDATE => ['reduct_at'],
+                ],
+            ],
+            [
+                'class' => BlameableBehaviorAnn::className(),
+                'attributes' => [
+                    parent::EVENT_BEFORE_INSERT => ['creat_by'],
+
+                ],
+            ],
+
+        ];
     }
 
     /**
@@ -74,4 +95,4 @@ class Film extends \yii\db\ActiveRecord
         return $this->hasOne(Creators::className(), ['id' => 'crid']);
     }
 }
-    // add by Ann
+// add by Ann

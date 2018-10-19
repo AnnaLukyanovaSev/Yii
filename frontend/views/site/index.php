@@ -26,9 +26,6 @@ $this->title = 'My Yii Application';
         ?>
         <br>
         <?php
-     //  echo ;
-      // $t= Yii::$app->user->identity->auth_at;
-      // echo date('Y-m-d G:i:s',$t);
         echo 'Last login at '.date('Y-m-d G:i:s', Yii::$app->user->identity->auth_at);
         ?>
         <!--Anna end -->
