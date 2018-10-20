@@ -10,7 +10,7 @@ namespace common\behaviours;
 use Yii;
 use yii\behaviors\BlameableBehavior;
 
-class BlameableBehaviorAnn extends BlameableBehavior
+class BlameableBehaviorName extends BlameableBehavior
 {
 
     protected function getValue($event)

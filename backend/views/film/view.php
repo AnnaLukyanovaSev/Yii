@@ -24,7 +24,18 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ]) ?>
     </p>
+    <p><b>
+            <?php
+            if (empty($model->create_at)) {
+                echo '';
+            } else {
+                echo 'Created at  ' . date('Y-m-d G:i:s', $model->create_at) . ' by ' . $model->creat_by;
+            }
 
+            echo '. Updated at ' . date('Y-m-d G:i:s', $model->reduct_at) . PHP_EOL;
+            ?>
+        </b>
+    </p>
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [

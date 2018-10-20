@@ -5,7 +5,7 @@ namespace common\models\Film;
 use Yii;
 use common\models\Creators\Creators as Creators;
 use yii\behaviors\TimestampBehavior;
-use common\behaviours\BlameableBehaviorAnn;
+use common\behaviours\BlameableBehaviorName;
 
 /**
  * This is the model class for table "film".
@@ -38,7 +38,7 @@ class Film extends \yii\db\ActiveRecord
                 ],
             ],
             [
-                'class' => BlameableBehaviorAnn::className(),
+                'class' => BlameableBehaviorName::className(),
                 'attributes' => [
                     parent::EVENT_BEFORE_INSERT => ['creat_by'],
 
