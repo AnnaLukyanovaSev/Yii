@@ -27,12 +27,17 @@ $this->params['breadcrumbs'][] = $this->title;
     <p><b>
             <?php
             if (empty($model->create_at)) {
-                echo '';
+                echo 'Data and author are unknown.';
             } else {
-                echo 'Created at  ' . date('Y-m-d G:i:s', $model->create_at) . ' by ' . $model->creat_by;
+                echo 'Created at  ' . date('Y-m-d G:i:s', $model->create_at) . ' by ';
+                echo isset($model->creat_by) ? $model->creat_by : 'unknown user';
+            }
+            if (empty($model->reduct_at)) {
+                echo ' Film information is not updated yet.';
+            } else {
+                echo '. Updated at ' . date('Y-m-d G:i:s', $model->reduct_at);
             }
 
-            echo '. Updated at ' . date('Y-m-d G:i:s', $model->reduct_at) . PHP_EOL;
             ?>
         </b>
     </p>
